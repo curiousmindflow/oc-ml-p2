@@ -21,9 +21,9 @@ def feature_distribution_univar(data, feature: str, feature_label: str, figsize=
     plt.figure(figsize=figsize)
 
     if feature:
-        sns.catplot(x=feature, kind="count", data=data)
+        sns.countplot(x=feature, data=data)
     else:
-        sns.catplot(kind="count", data=data)
+        sns.countplot(data=data)
 
     plt.title("Number of values per column", size=20)
     plt.xticks(rotation=45, size=16, ha="right")
