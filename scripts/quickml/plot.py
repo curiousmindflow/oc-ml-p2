@@ -81,6 +81,7 @@ def feature_distribution_bivar(data, feature1, feature1_label, feature2, feature
     plt.ylabel(feature2_label, size=16)
     plt.show()
 
+
 def feature_distributiion_bivar_box(data, feature1: str, feature2: str):
     plt.figure(figsize=(10, 3))
 
@@ -90,4 +91,23 @@ def feature_distributiion_bivar_box(data, feature1: str, feature2: str):
     plt.xticks(rotation=45, size=16, ha="right")
     plt.yticks(size=16)
     plt.ylabel("Number values", size=16)
+    plt.show()
+
+
+# feautres: [
+#  (feature_label_1, feature_data_1),
+#  (feature_label_2, feature_data_2),
+#   ...
+# ]
+def feature_distribution_multivar(features):
+    plt.figure(figsize=(10, 3))
+
+    for f in features:
+        sns.kdeplot(label=f[0], data=f[1], shade=True)
+
+    plt.title("Distribution", size=20)
+    plt.xticks(rotation=45, size=16, ha="right")
+    plt.yticks(size=16)
+    plt.ylabel("Occurences", size=16)
+    plt.legend()
     plt.show()
