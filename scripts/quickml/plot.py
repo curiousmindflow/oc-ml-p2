@@ -111,3 +111,16 @@ def feature_distribution_multivar(features):
     plt.ylabel("Occurences", size=16)
     plt.legend()
     plt.show()
+
+
+def feature_distribution_univar_box(data, feature: str, figsize=(10, 3)):
+        plt.figure(figsize=figsize)
+
+        sns.boxplot(y=feature, data=data)
+
+        plt.title(f"Distribution of {feature}", size=20)
+        plt.xticks(size=16)
+        plt.yticks(size=16)
+        plt.xlabel(feature, size=16)
+        plt.ylabel("Value", size=16)
+        plt.show()
