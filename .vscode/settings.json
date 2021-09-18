@@ -6,6 +6,15 @@
         "**/.hg/store/**": true,
         "**/datas/**": true
     },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/__pycache__/**": true
+    },
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "jupyter.jupyterServerType": "local",

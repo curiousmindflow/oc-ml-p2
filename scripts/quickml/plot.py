@@ -82,15 +82,16 @@ def feature_distribution_bivar(data, feature1, feature1_label, feature2, feature
     plt.show()
 
 
-def feature_distributiion_bivar_box(data, feature1: str, feature2: str):
-    plt.figure(figsize=(10, 3))
+def feature_distribution_bivar_box(data, feature1: str, feature2: str, figsize=(10, 3)):
+    plt.figure(figsize=figsize)
 
-    sns.catplot(x=feature1, y=feature2, kind="box", data=data)
+    sns.boxplot(x=feature1, y=feature2, data=data)
 
-    plt.title("Number of values per column", size=20)
+    plt.title(f"{feature1} / {feature2}", size=20)
     plt.xticks(rotation=45, size=16, ha="right")
     plt.yticks(size=16)
-    plt.ylabel("Number values", size=16)
+    plt.ylabel(f"{feature1}", size=16)
+    plt.ylabel(f"{feature2}", size=16)
     plt.show()
 
 
