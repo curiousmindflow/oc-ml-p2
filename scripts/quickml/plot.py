@@ -103,10 +103,17 @@ def feature_distribution_bivar_box(data, feature1: str, feature2: str, figsize=(
 def feature_distribution_multivar(features):
     plt.figure(figsize=(10, 3))
 
+    mode_id = 0
+
     for f in features:
         sns.kdeplot(label=f[0], data=f[1], shade=True)
+        id = modal_id(f[1])
+        if id > mode_id:
+            mode_id = id
 
-    plt.title("Distribution", size=20)
+    mode_name = modal_name(mode_id)
+
+    plt.title(f"{mode_name} Distribution", size=20)
     plt.xticks(rotation=45, size=16, ha="right")
     plt.yticks(size=16)
     plt.ylabel("Occurences", size=16)
@@ -115,13 +122,28 @@ def feature_distribution_multivar(features):
 
 
 def feature_distribution_univar_box(data, feature: str, figsize=(10, 3)):
-        plt.figure(figsize=figsize)
+    plt.figure(figsize=figsize)
 
-        sns.boxplot(y=feature, data=data)
+    sns.boxplot(y=feature, data=data)
 
-        plt.title(f"Distribution of {feature}", size=20)
-        plt.xticks(size=16)
-        plt.yticks(size=16)
-        plt.xlabel(feature, size=16)
-        plt.ylabel("Value", size=16)
-        plt.show()
+    plt.title(f"Distribution of {feature}", size=20)
+    plt.xticks(size=16)
+    plt.yticks(size=16)
+    plt.xlabel(feature, size=16)
+    plt.ylabel("Value", size=16)
+    plt.show()
+
+
+def modal_id(data):
+    return len(data.mode())
+
+
+def modal_name(id):
+    if id == 0:
+        return "No mode"
+    elif id == 1:
+        return "Uni-modal"
+    elif id == 2:
+        return "Bi-modal"
+    else:
+        return "Multi-modal"
